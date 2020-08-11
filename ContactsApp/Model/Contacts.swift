@@ -44,7 +44,7 @@ struct Contact {
         height = dictionary["height"] as? Float ?? 0
         biography = dictionary["biography"] as? String ?? ""
         temperament = dictionary["temperament"] as? Temperament ?? .choleric
-        educationPeriod = (dictionary["educationPeriod"] as? Dictionary<String,String> ?? ["":""])["start"] as? String ?? ""
+        educationPeriod = (dictionary["educationPeriod"] as? Dictionary<String,String> ?? ["":""])["start"] ?? ""
     }
     
 }
