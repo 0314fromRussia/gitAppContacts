@@ -10,9 +10,30 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    @IBOutlet weak var searchContact: UISearchBar!
+    
+   
+    
+    //обновление списка контактов свайпом вниз
+    @IBAction func refreshContacts(_ sender: Any) {
+        loadContacts {
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadContacts {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        searchContact.delegate = self
     }
 
     // MARK: - Table view data source
@@ -29,7 +50,7 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         let contact = contacts[indexPath.row]
         cell.textLabel?.text = contact.name
@@ -38,6 +59,21 @@ class TableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToOneContact", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToOneContact"{
+            if let indexPath = tableView.indexPathForSelectedRow {
+                (segue.destination as? ContactViewController)?.contact = contacts[indexPath.row]
+                
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -78,10 +114,17 @@ class TableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
+    
     */
 
+}
+
+extension TableViewController: UISearchBarDelegate {
+    
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+
+    }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F14A454424E4472600EA5729 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A454324E4472600EA5729 /* ContactViewController.swift */; };
 		F14BE68A24BB53740073B54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14BE68924BB53740073B54A /* AppDelegate.swift */; };
 		F14BE68C24BB53740073B54A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14BE68B24BB53740073B54A /* SceneDelegate.swift */; };
 		F14BE69124BB53740073B54A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14BE68F24BB53740073B54A /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F14A454324E4472600EA5729 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		F14BE68624BB53740073B54A /* ContactsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14BE68924BB53740073B54A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F14BE68B24BB53740073B54A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				F14BE6A424BB70DF0073B54A /* TableViewController.swift */,
 				F14BE68B24BB53740073B54A /* SceneDelegate.swift */,
 				F14BE68F24BB53740073B54A /* Main.storyboard */,
+				F14A454324E4472600EA5729 /* ContactViewController.swift */,
 				F14BE69224BB537F0073B54A /* Assets.xcassets */,
 				F14BE69424BB537F0073B54A /* LaunchScreen.storyboard */,
 				F14BE69724BB537F0073B54A /* Info.plist */,
@@ -157,6 +160,7 @@
 				F14BE68A24BB53740073B54A /* AppDelegate.swift in Sources */,
 				F14BE6A524BB70DF0073B54A /* TableViewController.swift in Sources */,
 				F14BE68C24BB53740073B54A /* SceneDelegate.swift in Sources */,
+				F14A454424E4472600EA5729 /* ContactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
