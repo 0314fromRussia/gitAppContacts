@@ -10,9 +10,19 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    @IBOutlet weak var searchContact: UISearchBar!
     
-   
+    
+   private let searchController = UISearchController(searchResultsController: nil)
+    
+    private var filteredContacts = [Contact]()
+    
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     //обновление списка контактов свайпом вниз
     @IBAction func refreshContacts(_ sender: Any) {
@@ -33,7 +43,13 @@ class TableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
-        searchContact.delegate = self
+        
+        // поисковой контроллер
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 
     // MARK: - Table view data source
@@ -44,7 +60,10 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
+        if isFiltering {
+            return filteredContacts.count
+        }
         return contacts.count
     }
 
@@ -52,7 +71,15 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let contact = contacts[indexPath.row]
+        var contact: Contact
+        if isFiltering {
+            contact = filteredContacts[indexPath.row]
+        } else {
+            contact = contacts[indexPath.row]
+        }
+        
+        //let contact = contacts[indexPath.row]
+        
         cell.textLabel?.text = contact.name
         cell.detailTextLabel?.text = contact.phone
         
@@ -67,7 +94,15 @@ class TableViewController: UITableViewController {
         
         if segue.identifier == "goToOneContact"{
             if let indexPath = tableView.indexPathForSelectedRow {
-                (segue.destination as? ContactViewController)?.contact = contacts[indexPath.row]
+                
+                var contact: Contact
+                if isFiltering {
+                    contact = filteredContacts[indexPath.row]
+                } else {
+                    contact = contacts[indexPath.row]
+                }
+                
+                (segue.destination as? ContactViewController)?.contact = contact
                 
                 tableView.deselectRow(at: indexPath, animated: true)
             }
@@ -119,12 +154,17 @@ class TableViewController: UITableViewController {
 
 }
 
-extension TableViewController: UISearchBarDelegate {
+extension TableViewController: UISearchResultsUpdating {
     
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchName(searchController.searchBar.text!)
+    }
     
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    private func filterContentForSearchName(_ searchText: String) {
         
-
+        filteredContacts = contacts.filter({ (contact: Contact) -> Bool in
+            return contact.name.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
     }
 }
