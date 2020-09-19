@@ -27,9 +27,9 @@ class TableViewController: UITableViewController {
     //обновление списка контактов свайпом вниз
     @IBAction func refreshContacts(_ sender: Any) {
         loadContacts {
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { // получаем доступ к главному потоку
                 self.refreshControl?.endRefreshing()
-                self.tableView.reloadData()
+                self.tableView.reloadData() //обновляем после загрузки и парсинга
             }
         }
     }
@@ -73,27 +73,27 @@ class TableViewController: UITableViewController {
 
         var contact: Contact
         if isFiltering {
-            contact = filteredContacts[indexPath.row]
+            contact = filteredContacts[indexPath.row] //получаем контакт для ячейки
         } else {
             contact = contacts[indexPath.row]
         }
         
         //let contact = contacts[indexPath.row]
         
-        cell.textLabel?.text = contact.name
+        cell.textLabel?.text = contact.name // заполняем ячейки
         cell.detailTextLabel?.text = contact.phone
         
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToOneContact", sender: self)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // когда нажали на ячейку
+        performSegue(withIdentifier: "goToOneContact", sender: self) // переход по сигвею и нажатию
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // перед переходом после нажатия на ячейку
         
         if segue.identifier == "goToOneContact"{
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let indexPath = tableView.indexPathForSelectedRow { // присваиваем значение выбранной ячейки
                 
                 var contact: Contact
                 if isFiltering {
