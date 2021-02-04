@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53E32A44DCD87B85FEE4EC01 /* Pods_ContactsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32C451D0A99DD274AA6B63E /* Pods_ContactsApp.framework */; };
 		F14A454424E4472600EA5729 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A454324E4472600EA5729 /* ContactViewController.swift */; };
 		F14BE68A24BB53740073B54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14BE68924BB53740073B54A /* AppDelegate.swift */; };
 		F14BE68C24BB53740073B54A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14BE68B24BB53740073B54A /* SceneDelegate.swift */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A32C451D0A99DD274AA6B63E /* Pods_ContactsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11D5ACF7D92D6CE80EC4205 /* Pods-ContactsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsApp.debug.xcconfig"; path = "Target Support Files/Pods-ContactsApp/Pods-ContactsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F14A454324E4472600EA5729 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		F14BE68624BB53740073B54A /* ContactsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14BE68924BB53740073B54A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		F14BE69E24BB54D40073B54A /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		F14BE6A224BB57C90073B54A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F14BE6A424BB70DF0073B54A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		FA1C091F540132767D0A77B9 /* Pods-ContactsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsApp.release.xcconfig"; path = "Target Support Files/Pods-ContactsApp/Pods-ContactsApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +41,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E32A44DCD87B85FEE4EC01 /* Pods_ContactsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2620DF6858E66B4EFB43E97E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E11D5ACF7D92D6CE80EC4205 /* Pods-ContactsApp.debug.xcconfig */,
+				FA1C091F540132767D0A77B9 /* Pods-ContactsApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C70818266D0A4EB8EBAE9D80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A32C451D0A99DD274AA6B63E /* Pods_ContactsApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F14BE67D24BB53740073B54A = {
 			isa = PBXGroup;
 			children = (
 				F14BE68824BB53740073B54A /* ContactsApp */,
 				F14BE68724BB53740073B54A /* Products */,
+				2620DF6858E66B4EFB43E97E /* Pods */,
+				C70818266D0A4EB8EBAE9D80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F14BE69A24BB537F0073B54A /* Build configuration list for PBXNativeTarget "ContactsApp" */;
 			buildPhases = (
+				DD4FC7BF45138A7DEE9EFF1F /* [CP] Check Pods Manifest.lock */,
 				F14BE68224BB53740073B54A /* Sources */,
 				F14BE68324BB53740073B54A /* Frameworks */,
 				F14BE68424BB53740073B54A /* Resources */,
+				5C09E01A4BCD66015C6C81C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +176,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5C09E01A4BCD66015C6C81C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ContactsApp/Pods-ContactsApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ContactsApp/Pods-ContactsApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ContactsApp/Pods-ContactsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD4FC7BF45138A7DEE9EFF1F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ContactsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F14BE68224BB53740073B54A /* Sources */ = {
@@ -302,6 +371,7 @@
 		};
 		F14BE69B24BB537F0073B54A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E11D5ACF7D92D6CE80EC4205 /* Pods-ContactsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -319,6 +389,7 @@
 		};
 		F14BE69C24BB537F0073B54A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA1C091F540132767D0A77B9 /* Pods-ContactsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
