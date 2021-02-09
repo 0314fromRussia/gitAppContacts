@@ -7,7 +7,7 @@
 //
 
 import Foundation
-// test commit
+import RealmSwift
 /*
  {
    "id": "5bbb009d5d052e0b9258c316",
@@ -48,3 +48,4 @@ struct Contact {
     }
     
 }
+
