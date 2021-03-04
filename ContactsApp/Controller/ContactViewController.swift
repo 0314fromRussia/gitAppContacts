@@ -10,7 +10,7 @@ import UIKit
 
 class ContactViewController: UIViewController {
     
-    var contact: Contact!
+    var contact: Contacts!
     
     @IBOutlet weak var lableName: UILabel!
     
@@ -25,9 +25,12 @@ class ContactViewController: UIViewController {
     
     @IBOutlet weak var labelNumber: UILabel!
     
+    @IBOutlet weak var phone: UIButton!
+    
     @IBAction func pushPhone(_ sender: UIButton) {
         
         callNumber(number: labelNumber.text ?? "000")
+        
     }
     
     func callNumber(number : String) {
@@ -45,11 +48,11 @@ class ContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        phone.setTitle("\(contact.phone)", for: .normal)
         lableName.text = contact.name
-        labelDate.text = contact.educationPeriod
+        //labelDate.text = contact.educationPeriod
         labelText.text = contact.biography
-        labelNumber.text = contact.phone
+//        labelNumber.text = contact.phone
         labelTemperament.text = String("\(contact.temperament)")
     }
     

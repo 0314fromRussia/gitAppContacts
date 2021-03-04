@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-var contacts: [Contact] {
+var contacts: [Contacts] {
     
     let data = try? Data(contentsOf: urlToData) // получили бинарные данные из url
     if data == nil {
@@ -21,10 +21,10 @@ var contacts: [Contact] {
     }
     
     //let array = rootDictionary! as! [Dictionary<String, Any>]
-    var returnArray: [Contact] = []
+    var returnArray: [Contacts] = []
     
     for dict in rootDictionary! { // парсим и добавляем в массив
-        let newContacts = Contact(dictionary: dict)
+        let newContacts = Contacts(dictionary: dict)
         returnArray.append(newContacts)
     }
     return returnArray
@@ -38,19 +38,19 @@ var urlToData: URL {
     return urlPath
 }
 
-func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
-    
-    let url = URL(string: "https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json")
-    let session = URLSession(configuration: .default)
-    
-    let downloadTask = session.downloadTask(with: url!) { (urlFile, response, error) in
-        if urlFile != nil { //сохраняем url
-            try? FileManager.default.copyItem(at: urlFile!, to: urlToData)
-            
-            print(contacts.count)
-            completionHandler?()
-        }
-    }
-    downloadTask.resume()
-}
+//func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
+//    
+//    let url = URL(string: "https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json")
+//    let session = URLSession(configuration: .default)
+//    
+//    let downloadTask = session.downloadTask(with: url!) { (urlFile, response, error) in
+//        if urlFile != nil { //сохраняем url
+//            try? FileManager.default.copyItem(at: urlFile!, to: urlToData)
+//            
+//            print(contacts.count)
+//            completionHandler?()
+//        }
+//    }
+//    downloadTask.resume()
+//}
 

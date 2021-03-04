@@ -113,3 +113,18 @@ func parse(pathForFile: String) -> [Contacts]? {
     return returnArray
 }
 
+func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
+    
+    let url = URL(string: "https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json")
+    let session = URLSession(configuration: .default)
+    
+    let downloadTask = session.downloadTask(with: url!) { (urlFile, response, error) in
+        if urlFile != nil { //сохраняем url
+            try? FileManager.default.copyItem(at: urlFile!, to: urlToData)
+            
+            print(contacts.count)
+            completionHandler?()
+        }
+    }
+    downloadTask.resume()
+}

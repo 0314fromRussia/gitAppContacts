@@ -12,7 +12,8 @@ class TableViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     
-    private var filteredContacts = [Contact]()
+    private var filteredContacts = [Contacts]()
+    var filteredItems: [Contacts] = []
     //func updateSearchResults
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
@@ -69,7 +70,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        var contact: Contact
+        var contact: Contacts
         if isFiltering {
             contact = filteredContacts[indexPath.row] //получаем контакт для ячейки
         } else {
@@ -93,7 +94,7 @@ class TableViewController: UITableViewController {
         if segue.identifier == "goToOneContact"{
             if let indexPath = tableView.indexPathForSelectedRow { // присваиваем значение выбранной ячейки
                 
-                var contact: Contact
+                var contact: Contacts
                 if isFiltering {
                     contact = filteredContacts[indexPath.row]
                 } else {
@@ -119,7 +120,7 @@ extension TableViewController: UISearchResultsUpdating {
     
     private func filterContentForSearchName(_ searchText: String) {
         
-        filteredContacts = contacts.filter({ (contact: Contact) -> Bool in
+        filteredContacts = contacts.filter({ (contact: Contacts) -> Bool in
             guard contact.name.lowercased().contains(searchText.lowercased()) || contact.phone.contains(searchText) else {
                 return false
             }
@@ -127,4 +128,17 @@ extension TableViewController: UISearchResultsUpdating {
         })
         tableView.reloadData()
     }
+    
+    // заготовка для фильтрации в алфавитном порядке
+    func filterItems(text: String?) {
+        guard let text = text, !text.isEmpty else {
+            filteredItems = filteredContacts
+            return
+        }
+        
+        filteredItems = filteredContacts.filter {
+            $0.name.lowercased().contains(text.lowercased())
+        }
+
+}
 }
