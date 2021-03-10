@@ -143,7 +143,7 @@
                         <outlet property="labelTemperament" destination="wG9-Gj-Wyg" id="mJY-9T-d5F"/>
                         <outlet property="labelText" destination="XXS-S9-wjc" id="0dk-2x-h3W"/>
                         <outlet property="lableName" destination="3HX-KC-HwL" id="NJi-yw-Waf"/>
-                        <outlet property="phone" destination="XYo-Te-2EU" id="mN2-h3-j06"/>
+                        <outlet property="phone" destination="XYo-Te-2EU" id="PtG-3b-jF9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6u-9V-hIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

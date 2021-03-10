@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TableViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     
     private var filteredContacts = [Contacts]()
+    
+    //let repository = Repository()
+    
+    var items: [Contacts] = []
+    
+    
+    
     var filteredItems: [Contacts] = []
     //func updateSearchResults
     private var searchBarIsEmpty: Bool {
@@ -32,16 +40,28 @@ class TableViewController: UITableViewController {
             }
         }
     }
+
     
     
+//    func createdRepo()  {
+//        DispatchQueue.global(qos: .utility).async {
+//            self.items = self.repository.fetchContacts()
+//        }
+//        //self.items = self.repository.fetchContacts()
+//    }
+     
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loadContacts {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                
             }
+            self.fetchRealm()
+            self.newItems()
+            parse()
+            DispatchQueue.main.async {self.tableView.reloadData()}
         }
         
         // поисковой контроллер
@@ -50,6 +70,17 @@ class TableViewController: UITableViewController {
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    func newItems() {
+        items = fetchRealm()
+    }
+    
+    
+    func fetchRealm() -> [Contacts] {
+        let realm = try! Realm()
+        return Array(realm.objects(Contacts.self).sorted(byKeyPath: "name", ascending: true))
+        
     }
     
     // MARK: - Table view data source
@@ -63,7 +94,7 @@ class TableViewController: UITableViewController {
         if isFiltering {
             return filteredContacts.count
         }
-        return contacts.count
+        return fetchRealm().count
     }
     
     
@@ -74,7 +105,7 @@ class TableViewController: UITableViewController {
         if isFiltering {
             contact = filteredContacts[indexPath.row] //получаем контакт для ячейки
         } else {
-            contact = contacts[indexPath.row]
+            contact = fetchRealm()[indexPath.row]
         }
         
         //let contact = contacts[indexPath.row]
@@ -98,7 +129,7 @@ class TableViewController: UITableViewController {
                 if isFiltering {
                     contact = filteredContacts[indexPath.row]
                 } else {
-                    contact = contacts[indexPath.row]
+                    contact = fetchRealm()[indexPath.row]
                 }
                 
                 (segue.destination as? ContactViewController)?.contact = contact
@@ -120,7 +151,7 @@ extension TableViewController: UISearchResultsUpdating {
     
     private func filterContentForSearchName(_ searchText: String) {
         
-        filteredContacts = contacts.filter({ (contact: Contacts) -> Bool in
+        filteredContacts = items.filter({ (contact: Contacts) -> Bool in
             guard contact.name.lowercased().contains(searchText.lowercased()) || contact.phone.contains(searchText) else {
                 return false
             }
