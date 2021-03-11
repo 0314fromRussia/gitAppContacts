@@ -37,7 +37,12 @@ class TableViewController: UITableViewController {
         }
     }
 
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        loadingInOneMinute()
+    }
+        
+        
     
 //    func createdRepo()  {
 //        DispatchQueue.global(qos: .utility).async {
