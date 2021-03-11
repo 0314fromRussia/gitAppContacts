@@ -17,6 +17,9 @@ func currentTime() -> String {
     return "\(minutes):\(second)"
 }
 
+
+// MARK: - Предупреждение!!! Код ниже может вызывать головокружения, мигрень и прочие неприятные ощущения. Не рекомендовано лицам моложе 18 лет и беременным женщинам. По всем вопросам можно писать в тг @nikita0314
+
 func loadingInOneMinute() {
     // создаем файл, куда запишем время запуска приложения и потом будем сравнивать с новым временем
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first   // получаем урл до документов
@@ -48,7 +51,7 @@ func loadingInOneMinute() {
             let currentDate = currentTime()
             var currentDateArray = Array(currentDate)
             
-            if oldDateArray[1] == ":" {         // если у нас в минутах 1 число, то добавим 0 в начало массива
+            if oldDateArray[1] == ":" {         // если у нас время прошлой загрузки х:хх
                 oldDateArray.insert("0", at: 0)
                 
                 oldDateMinutes1 = Int(String("\(oldDateArray[0])")) ?? 0
@@ -75,7 +78,7 @@ func loadingInOneMinute() {
                 }
                 
             }
-            if currentDateArray[1] == ":" {         // если у нас в минутах 1 число, то добавим 0 в начало массива
+            if currentDateArray[1] == ":" {         // если у нас время текущей загрузки х:хх
                 currentDateArray.insert("0", at: 0)
                 
                 oldDateMinutes1 = Int(String("\(oldDateArray[0])")) ?? 0
@@ -102,7 +105,7 @@ func loadingInOneMinute() {
                 }
                 
             }
-            if oldDateArray[oldDateArray.count-2] == ":" {
+            if oldDateArray[oldDateArray.count-2] == ":" {      // если у нас время прошлой загрузки хх:х
                 
                 oldDateArray.append("0")
                 
@@ -129,7 +132,7 @@ func loadingInOneMinute() {
                     }
                 }
             }
-            if currentDateArray[currentDateArray.count-2] == ":"  {
+            if currentDateArray[currentDateArray.count-2] == ":"  {     // если у нас время текущей загрузки хх:х
                 
                 currentDateArray.append("0")
                 
@@ -155,7 +158,7 @@ func loadingInOneMinute() {
                     
                     }
                 }
-            } else {
+            } else {        // если у нас время загрузки хх:хх
                 oldDateMinutes1 = Int(String("\(oldDateArray[0])")) ?? 0
                 oldDateMinutes2 = Int(String("\(oldDateArray[1])")) ?? 0
                 oldDateSec1 = Int(String("\(oldDateArray[3])")) ?? 0
