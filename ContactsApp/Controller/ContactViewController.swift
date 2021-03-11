@@ -11,6 +11,7 @@ import UIKit
 class ContactViewController: UIViewController {
     
     var contact: Contacts!
+
     
     @IBOutlet weak var lableName: UILabel!
     
@@ -23,38 +24,35 @@ class ContactViewController: UIViewController {
     
     @IBOutlet weak var labelText: UILabel!
     
-    @IBOutlet weak var phone: UIButton! {
-        didSet {
-            
+    @IBOutlet weak var phone: UIButton!
+    
+    @IBAction func phonePush(_ sender: UIButton) {
+
+        callNumber(number: contact.phone)
+
+    }
+
+    func callNumber(number : String) {
+
+        if let url = URL(string: "tel://\(number)") {
+            if #available(iOS 10, *) {                          // проверка версии иос
+                UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
+                    print(success)})
+            } else {
+                let success = UIApplication.shared.openURL(url)
+                print(success)
+            }
         }
     }
-    
-//    @IBAction func phonePush(_ sender: UIButton) {
-//        sender.setTitle("\(contact.phone)", for: .normal)
-//        callNumber(number: contact.phone)
-//
-//    }
-//
-//    func callNumber(number : String) {
-//
-//        if let url = URL(string: "tel://\(number)") {
-//            if #available(iOS 10, *) {                          // проверка версии иос
-//                UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
-//                    print(success)})
-//            } else {
-//                let success = UIApplication.shared.openURL(url)
-//                print(success)
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      phone.setTitle("\(contact.phone)", for: .normal)
+        phone.setTitle("\(contact.phone)", for: .normal)
         lableName.text = contact.name
         //labelDate.text = contact.educationPeriod
         labelText.text = contact.biography
+        labelDate.text = String("\(contact.educationPeriod)")
 
         labelTemperament.text = String("\(contact.temperament)")
     }

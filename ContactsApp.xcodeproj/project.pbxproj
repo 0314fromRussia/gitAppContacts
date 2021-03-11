@@ -17,7 +17,6 @@
 		F14BE6A324BB57C90073B54A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14BE6A224BB57C90073B54A /* Model.swift */; };
 		F14BE6A524BB70DF0073B54A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14BE6A424BB70DF0073B54A /* TableViewController.swift */; };
 		F15EACD625D15336006B6154 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15EACD525D15336006B6154 /* Contact.swift */; };
-		F1879EF225F7AB4B00D002BD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1879EF125F7AB4B00D002BD /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 		F14BE6A224BB57C90073B54A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F14BE6A424BB70DF0073B54A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		F15EACD525D15336006B6154 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		F1879EF125F7AB4B00D002BD /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		FA1C091F540132767D0A77B9 /* Pods-ContactsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsApp.release.xcconfig"; path = "Target Support Files/Pods-ContactsApp/Pods-ContactsApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				F14BE6A224BB57C90073B54A /* Model.swift */,
-				F1879EF125F7AB4B00D002BD /* Repository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -253,7 +250,6 @@
 				F14BE6A324BB57C90073B54A /* Model.swift in Sources */,
 				F14BE68A24BB53740073B54A /* AppDelegate.swift in Sources */,
 				F14BE6A524BB70DF0073B54A /* TableViewController.swift in Sources */,
-				F1879EF225F7AB4B00D002BD /* Repository.swift in Sources */,
 				F14BE68C24BB53740073B54A /* SceneDelegate.swift in Sources */,
 				F14A454424E4472600EA5729 /* ContactViewController.swift in Sources */,
 				F15EACD625D15336006B6154 /* Contact.swift in Sources */,

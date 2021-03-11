@@ -15,11 +15,7 @@ class TableViewController: UITableViewController {
     
     private var filteredContacts = [Contacts]()
     
-    //let repository = Repository()
-    
     var items: [Contacts] = []
-    
-    
     
     var filteredItems: [Contacts] = []
     //func updateSearchResults
@@ -151,7 +147,7 @@ extension TableViewController: UISearchResultsUpdating {
     
     private func filterContentForSearchName(_ searchText: String) {
         
-        filteredContacts = items.filter({ (contact: Contacts) -> Bool in
+        filteredContacts = fetchRealm().filter({ (contact: Contacts) -> Bool in
             guard contact.name.lowercased().contains(searchText.lowercased()) || contact.phone.contains(searchText) else {
                 return false
             }
@@ -160,16 +156,16 @@ extension TableViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
     
-    // заготовка для фильтрации в алфавитном порядке
-    func filterItems(text: String?) {
-        guard let text = text, !text.isEmpty else {
-            filteredItems = filteredContacts
-            return
-        }
-        
-        filteredItems = filteredContacts.filter {
-            $0.name.lowercased().contains(text.lowercased())
-        }
-
-}
+//    // заготовка для фильтрации в алфавитном порядке
+//    func filterItems(text: String?) {
+//        guard let text = text, !text.isEmpty else {
+//            filteredItems = filteredContacts
+//            return
+//        }
+//        
+//        filteredItems = filteredContacts.filter {
+//            $0.name.lowercased().contains(text.lowercased())
+//        }
+//
+//}
 }
