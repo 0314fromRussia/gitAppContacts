@@ -7,5 +7,5 @@ target 'ContactsApp' do
 
   # Pods for ContactsApp
 pod 'RealmSwift', '=10.1.4'
-
+pod 'Toast-Swift', '~> 5.0.1'
 end

@@ -9,27 +9,6 @@
 import Foundation
 import RealmSwift
 
-//var contacts: [Contacts] {
-//
-//    let data = try? Data(contentsOf: urlToData) // получили бинарные данные из url
-//    if data == nil {
-//        return []
-//    }
-//    let rootDictionary = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [Dictionary<String, Any>]
-//    if rootDictionary == nil {
-//        return []
-//    }
-//
-//    //let array = rootDictionary! as! [Dictionary<String, Any>]
-//    var returnArray: [Contacts] = []
-//
-//    for dict in rootDictionary! { // парсим и добавляем в массив
-//        let newContacts = Contacts(dictionary: dict)
-//        returnArray.append(newContacts)
-//    }
-//    return returnArray
-//}
-
 //https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json
 
 var urlToData: URL {
@@ -37,7 +16,6 @@ var urlToData: URL {
     let urlPath = URL(fileURLWithPath: path) // из стринга конвертируем в url
     return urlPath
 }
-
 
 func parse() -> [Contacts]? {
     
@@ -47,6 +25,7 @@ func parse() -> [Contacts]? {
         data = try Data(contentsOf: urlToData) // получили бинарные данные из url
     } catch {
         print("Ошибка получения Data: \(error.localizedDescription)")
+        
         return nil
     }
     
@@ -91,7 +70,6 @@ func parse() -> [Contacts]? {
         print(error)
     }
     
-    
     return returnArray
 }
 
@@ -102,6 +80,7 @@ func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
     
     let downloadTask = session.downloadTask(with: url!) { (urlFile, response, error) in
         if urlFile != nil { //сохраняем url
+            Session.shared.urlFile = String(describing: urlFile) // передаем в синглтон урл, чтобы потом показать тост, если это необходимо и урла нет
             try? FileManager.default.copyItem(at: urlFile!, to: urlToData)
             
             completionHandler?()
@@ -109,21 +88,4 @@ func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
     }
     downloadTask.resume()
 }
-
-
-//func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
-//    
-//    let url = URL(string: "https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json")
-//    let session = URLSession(configuration: .default)
-//    
-//    let downloadTask = session.downloadTask(with: url!) { (urlFile, response, error) in
-//        if urlFile != nil { //сохраняем url
-//            try? FileManager.default.copyItem(at: urlFile!, to: urlToData)
-//            
-//            print(contacts.count)
-//            completionHandler?()
-//        }
-//    }
-//    downloadTask.resume()
-//}
 

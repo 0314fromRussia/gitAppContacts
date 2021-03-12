@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Toast_Swift
+
 
 class TableViewController: UITableViewController {
     
@@ -36,33 +38,30 @@ class TableViewController: UITableViewController {
             }
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         loadingInOneMinute()
     }
-        
-        
     
-//    func createdRepo()  {
-//        DispatchQueue.global(qos: .utility).async {
-//            self.items = self.repository.fetchContacts()
-//        }
-//        //self.items = self.repository.fetchContacts()
-//    }
-     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // показываем тост, когда не смогли распарсить джейсон
+        if parse() == nil {
+            showTost()
+        }
+        // показываем тост, когда нет урла
+        if Session.shared.urlFile == "" {
+            showTost()
+        }
+        
+        // грузим контакты
         loadContacts {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            self.fetchRealm()
             self.newItems()
-            parse()
-            DispatchQueue.main.async {self.tableView.reloadData()}
         }
         
         // поисковой контроллер
@@ -77,6 +76,10 @@ class TableViewController: UITableViewController {
         items = fetchRealm()
     }
     
+    func showTost() {
+        
+        self.view.makeToast("Нет подключения к сети", duration: 10.0, position: .center)
+    }
     
     func fetchRealm() -> [Contacts] {
         let realm = try! Realm()
@@ -108,8 +111,6 @@ class TableViewController: UITableViewController {
         } else {
             contact = fetchRealm()[indexPath.row]
         }
-        
-        //let contact = contacts[indexPath.row]
         
         cell.textLabel?.text = contact.name // заполняем ячейки
         cell.detailTextLabel?.text = contact.phone
@@ -160,17 +161,4 @@ extension TableViewController: UISearchResultsUpdating {
         })
         tableView.reloadData()
     }
-    
-//    // заготовка для фильтрации в алфавитном порядке
-//    func filterItems(text: String?) {
-//        guard let text = text, !text.isEmpty else {
-//            filteredItems = filteredContacts
-//            return
-//        }
-//        
-//        filteredItems = filteredContacts.filter {
-//            $0.name.lowercased().contains(text.lowercased())
-//        }
-//
-//}
 }

@@ -128,7 +128,7 @@ func loadingInOneMinute() {
                     print(newDate ?? "")
                     FileManager.default.createFile(atPath: timeFile ?? "", contents: newDate, attributes: nil)
                     loadContacts {
-                    
+                        
                     }
                 }
             }
@@ -155,7 +155,7 @@ func loadingInOneMinute() {
                     print(newDate ?? "")
                     FileManager.default.createFile(atPath: timeFile ?? "", contents: newDate, attributes: nil)
                     loadContacts {
-                    
+                        
                     }
                 }
             } else {        // если у нас время загрузки хх:хх
@@ -178,7 +178,7 @@ func loadingInOneMinute() {
                     print(newDate ?? "")
                     FileManager.default.createFile(atPath: timeFile ?? "", contents: newDate, attributes: nil)
                     loadContacts {
-                       
+                        
                     }
                 }
             }
@@ -188,15 +188,9 @@ func loadingInOneMinute() {
             print(error)
         }
         
-        
-        
-        
         let newDate = currentTime().data(using: .utf8)
         print(newDate ?? "")
         FileManager.default.createFile(atPath: timeFile ?? "", contents: newDate, attributes: nil)
-        
-        
-        
         
     }
 }

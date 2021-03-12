@@ -4,19 +4,23 @@ PODS:
   - Realm/Headers (10.1.4)
   - RealmSwift (10.1.4):
     - Realm (= 10.1.4)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - RealmSwift (= 10.1.4)
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
     - Realm
     - RealmSwift
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Realm: 80f4fb2971ccb9adc27a47d0955ae8e533a7030b
   RealmSwift: 0e566ca714edb377bba8ea0811eafcea0b93734e
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: e9dbf82fecbd789363a043428f0b406699d7b748
+PODFILE CHECKSUM: 04133c4f49a26d57ffe14d350f8ec25d8e827e79
 
 COCOAPODS: 1.10.0
