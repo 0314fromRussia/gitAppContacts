@@ -29,13 +29,6 @@ func parse() -> [Contacts]? {
         return nil
     }
     
-    
-//    var urlToData: URL {
-//        let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] + "/data.json" // возвращаем путь до директории, где url
-//        let urlPath = URL(fileURLWithPath: path) // из стринга конвертируем в url
-//        return urlPath
-//    }
-    
     guard let dataReal = data else {
         print("Error  ")
         return nil
