@@ -20,7 +20,7 @@ class TableViewController: UITableViewController {
     var items: [Contacts] = []
     
     var filteredItems: [Contacts] = []
-    //func updateSearchResults
+   
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
@@ -49,16 +49,18 @@ class TableViewController: UITableViewController {
         
         // показываем тост, когда не смогли распарсить джейсон
         if parse() == nil {
-            showTost()
+            DispatchQueue.main.async {
+                self.showTost()
+            }
         }
-        // показываем тост, когда нет урла
-        if Session.shared.urlFile == "" {
-            showTost()
-        }
-        
+    
         // грузим контакты
         loadContacts {
             DispatchQueue.main.async {
+                // показываем тост, когда нет урла
+                if Session.shared.urlFile == "" {
+                    self.showTost()
+                }
                 self.tableView.reloadData()
             }
             self.newItems()
@@ -100,7 +102,6 @@ class TableViewController: UITableViewController {
         }
         return fetchRealm().count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)

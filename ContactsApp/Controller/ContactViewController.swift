@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ContactViewController: UIViewController {
     
     var contact: Contacts!
-
     
     @IBOutlet weak var lableName: UILabel!
     
@@ -27,22 +27,30 @@ class ContactViewController: UIViewController {
     @IBOutlet weak var phone: UIButton!
     
     @IBAction func phonePush(_ sender: UIButton) {
-
+        
         callNumber(number: contact.phone)
-
+        
     }
-
+    
     func callNumber(number : String) {
-
+        
         if let url = URL(string: "tel://\(number)") {
             if #available(iOS 10, *) {                          // проверка версии иос
                 UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
-                    print(success)})
+                                            print(success)})
             } else {
                 let success = UIApplication.shared.openURL(url)
                 print(success)
             }
         }
+    }
+    let realm = try! Realm()
+    
+    func fetchPeriod() -> String {
+        let period = realm.objects(EducationPeriod.self).first
+        let start = period?["start"]
+        let end = period?["end"]
+        return String("\(String(describing: start))" + "-" + "\(String(describing: end))")
     }
     
     override func viewDidLoad() {
@@ -50,22 +58,8 @@ class ContactViewController: UIViewController {
         
         phone.setTitle("\(contact.phone)", for: .normal)
         lableName.text = contact.name
-        //labelDate.text = contact.educationPeriod
         labelText.text = contact.biography
-        labelDate.text = String("\(contact.educationPeriod)")
-
+        labelDate.text =  fetchPeriod()
         labelTemperament.text = String("\(contact.temperament)")
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

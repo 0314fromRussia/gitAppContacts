@@ -30,11 +30,11 @@ func parse() -> [Contacts]? {
     }
     
     
-    var urlToData: URL {
-        let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] + "/data.json" // возвращаем путь до директории, где url
-        let urlPath = URL(fileURLWithPath: path) // из стринга конвертируем в url
-        return urlPath
-    }
+//    var urlToData: URL {
+//        let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] + "/data.json" // возвращаем путь до директории, где url
+//        let urlPath = URL(fileURLWithPath: path) // из стринга конвертируем в url
+//        return urlPath
+//    }
     
     guard let dataReal = data else {
         print("Error  ")
@@ -80,7 +80,8 @@ func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
     
     let downloadTask = session.downloadTask(with: url!) { (urlFile, response, error) in
         if urlFile != nil { //сохраняем url
-            Session.shared.urlFile = String(describing: urlFile) // передаем в синглтон урл, чтобы потом показать тост, если это необходимо и урла нет
+            Session.shared.urlFile = String(describing: urlToData) // передаем в синглтон урл, чтобы потом показать тост, если это необходимо и урла нет
+            print(Session.shared.urlFile)
             try? FileManager.default.copyItem(at: urlFile!, to: urlToData)
             
             completionHandler?()

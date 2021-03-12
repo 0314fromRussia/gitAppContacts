@@ -82,7 +82,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjB-Ck-Zzc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjB-Ck-Zzc">
                                 <rect key="frame" x="20" y="187" width="374" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="p1a-w4-JaK"/>
@@ -115,7 +115,7 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhW-CF-Juv">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhW-CF-Juv">
                                 <rect key="frame" x="104" y="298" width="207" height="55"/>
                                 <connections>
                                     <action selector="phonePush:" destination="qPh-3E-gqh" eventType="touchUpInside" id="0En-tt-08O"/>
@@ -140,6 +140,7 @@
                             <constraint firstItem="XXS-S9-wjc" firstAttribute="top" secondItem="XYo-Te-2EU" secondAttribute="bottom" constant="47" id="E8C-Jx-Rtl"/>
                             <constraint firstItem="XYo-Te-2EU" firstAttribute="top" secondItem="f88-xY-Jbe" secondAttribute="bottom" constant="8" id="IF8-e0-GdB"/>
                             <constraint firstItem="3HX-KC-HwL" firstAttribute="trailing" secondItem="JZo-kF-B2L" secondAttribute="trailingMargin" id="IJE-nV-Po8"/>
+                            <constraint firstItem="MhW-CF-Juv" firstAttribute="top" secondItem="XYo-Te-2EU" secondAttribute="top" id="JNC-RF-WSg"/>
                             <constraint firstItem="3HX-KC-HwL" firstAttribute="leading" secondItem="wjB-Ck-Zzc" secondAttribute="leading" id="Ntc-xJ-wcj"/>
                             <constraint firstItem="rIy-Sy-IZ7" firstAttribute="leading" secondItem="f88-xY-Jbe" secondAttribute="leading" id="Qd9-fV-beK"/>
                             <constraint firstItem="rIy-Sy-IZ7" firstAttribute="top" secondItem="XYo-Te-2EU" secondAttribute="bottom" constant="8" id="QeO-AT-8FF"/>
@@ -147,6 +148,7 @@
                             <constraint firstItem="f88-xY-Jbe" firstAttribute="centerX" secondItem="MhW-CF-Juv" secondAttribute="centerX" id="UYR-dY-qw7"/>
                             <constraint firstItem="wjB-Ck-Zzc" firstAttribute="top" secondItem="3HX-KC-HwL" secondAttribute="bottom" constant="54" id="WVT-1E-gHa"/>
                             <constraint firstItem="f88-xY-Jbe" firstAttribute="centerX" secondItem="wG9-Gj-Wyg" secondAttribute="centerX" id="WpH-uX-XUZ"/>
+                            <constraint firstItem="MhW-CF-Juv" firstAttribute="bottom" secondItem="XYo-Te-2EU" secondAttribute="bottom" id="ZQf-vR-NlH"/>
                             <constraint firstItem="3HX-KC-HwL" firstAttribute="leading" secondItem="JZo-kF-B2L" secondAttribute="leadingMargin" id="Zsr-t9-4v3"/>
                             <constraint firstItem="wG9-Gj-Wyg" firstAttribute="trailing" secondItem="XXS-S9-wjc" secondAttribute="trailing" id="by3-Aa-IRN"/>
                             <constraint firstItem="XXS-S9-wjc" firstAttribute="bottom" secondItem="PsK-iV-DpJ" secondAttribute="bottom" id="cqT-fF-VHs"/>
@@ -158,6 +160,7 @@
                             <constraint firstItem="wG9-Gj-Wyg" firstAttribute="centerX" secondItem="XYo-Te-2EU" secondAttribute="centerX" id="wEe-ra-6NE"/>
                             <constraint firstItem="XXS-S9-wjc" firstAttribute="top" secondItem="rIy-Sy-IZ7" secondAttribute="bottom" constant="38" id="xg7-SQ-iZb"/>
                             <constraint firstItem="XYo-Te-2EU" firstAttribute="top" secondItem="wG9-Gj-Wyg" secondAttribute="bottom" constant="32.5" id="xqs-pS-lOi"/>
+                            <constraint firstItem="MhW-CF-Juv" firstAttribute="leading" secondItem="XYo-Te-2EU" secondAttribute="leading" id="zAe-wD-xwt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="m66-VD-BWZ"/>

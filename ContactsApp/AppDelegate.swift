@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,9 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        performRealmMigrations()
+
         return true
     }
+    private func performRealmMigrations() {
+            Realm.Configuration.defaultConfiguration = Realm.Configuration(
+                schemaVersion: 9,
+                migrationBlock: { migration, oldSchemaVersion in },
+                deleteRealmIfMigrationNeeded: true
+            )
+            
+            let _ = try! Realm()
+        }
 
     // MARK: UISceneSession Lifecycle
 
