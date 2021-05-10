@@ -21,6 +21,7 @@ func currentTime() -> String {
 // MARK: - Предупреждение!!! Код ниже может вызывать головокружения, мигрень и прочие неприятные ощущения. Не рекомендовано лицам моложе 18 лет и беременным женщинам. По всем вопросам можно писать в тг @nikita0314
 
 func loadingInOneMinute() {
+    
     // создаем файл, куда запишем время запуска приложения и потом будем сравнивать с новым временем
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first   // получаем урл до документов
     print(documentsDirectory ?? "")

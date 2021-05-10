@@ -19,7 +19,7 @@ class TableViewController: UITableViewController {
     
     var items: [Contacts] = []
     
-    var filteredItems: [Contacts] = []
+   // var filteredItems: [Contacts] = []
    
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
@@ -46,14 +46,8 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
-        // показываем тост, когда не смогли распарсить джейсон
-        if parse() == nil {
-            DispatchQueue.main.async {
-                self.showTost()
-            }
-        }
-    
         // грузим контакты
         loadContacts {
             DispatchQueue.main.async {
@@ -65,6 +59,18 @@ class TableViewController: UITableViewController {
             }
             self.newItems()
         }
+        
+        
+        items = parse() ?? []
+        // показываем тост, когда не смогли распарсить джейсон
+        if parse() == nil {
+            DispatchQueue.main.async {
+                self.showTost()
+            }
+        }
+        establishUserDefaultsHaveBeenVerifed()
+        
+        
         
         // поисковой контроллер
         searchController.searchResultsUpdater = self
@@ -123,6 +129,7 @@ class TableViewController: UITableViewController {
         performSegue(withIdentifier: "goToOneContact", sender: self) // переход по сигвею и нажатию
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // перед переходом после нажатия на ячейку
         
         if segue.identifier == "goToOneContact"{
@@ -163,3 +170,4 @@ extension TableViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
 }
+
