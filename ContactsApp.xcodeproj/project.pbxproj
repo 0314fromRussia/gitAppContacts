@@ -131,9 +131,9 @@
 		F191BDD825CED5A400A78996 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F161694625FAF5ED00EBDBCC /* SingltonURLFile.swift */,
 				F14BE6A224BB57C90073B54A /* ParseAndLoadService.swift */,
 				F161693925FA403600EBDBCC /* Timer.swift */,
-				F161694625FAF5ED00EBDBCC /* SingltonURLFile.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

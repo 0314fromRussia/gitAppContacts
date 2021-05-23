@@ -13,10 +13,10 @@ class Session: CustomStringConvertible {
     static let shared = Session()
     private init() {}
     
-    var urlFile: String = "https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json"
+   var urlFile: String = "https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json"
     
     var description: String {
-        return "id: \(urlFile)"
+        return "i"
     }
     
 }

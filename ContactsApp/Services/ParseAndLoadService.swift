@@ -11,23 +11,32 @@ import RealmSwift
 
 //https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json
 
-var urlToData: URL {
-    let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] + "/data.json" // возвращаем путь до директории, где url
-    let urlPath = URL(fileURLWithPath: path) // из стринга конвертируем в url
-    return urlPath
-}
+//var urlToData: URL {
+//    let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] + "/data.json" // возвращаем путь до директории, где url
+//    let urlPath = URL(fileURLWithPath: path) // из стринга конвертируем в url
+//    return urlPath
+//}
 
 
 func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
     
     let url = URL(string: "https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-ios/master/json/generated-01.json")
     let session = URLSession(configuration: .default)
+    
+    
 
     let downloadTask = session.downloadTask(with: url!) { (urlFile, response, error) in
         if urlFile != nil { //сохраняем url (тут нил при первичном запуске)
-            Session.shared.urlFile = String(describing: urlToData) // передаем в синглтон урл, чтобы потом показать тост, если это необходимо и урла нет
-            print(Session.shared.urlFile)
-            try? FileManager.default.copyItem(at: urlFile!, to: urlToData)
+            
+//            Session.shared.urlFile = String(describing: urlToData) // передаем в синглтон урл, чтобы потом показать тост, если это необходимо и урла нет
+//            print(Session.shared.urlFile)
+//            try? FileManager.default.copyItem(at: urlFile!, to: urlToData)
+            
+            let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] + "/data.json" // возвращаем путь до директории, где url
+            let urlPath = URL(fileURLWithPath: path) // из стринга конвертируем в url
+        
+            try? FileManager.default.copyItem(at: urlFile!, to: urlPath)
+            parse()
 
             completionHandler?()
         }
@@ -36,14 +45,15 @@ func loadContacts(completionHandler: (() -> Void)?) { // загружаем json
 }
 
 
-
 func parse() -> [Contacts]? {
-
-  
+    
+    let path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] + "/data.json" // возвращаем путь до директории, где url
+    let urlPath = URL(fileURLWithPath: path) // из стринга конвертируем в url
+    
     var data: Data?
 
     do{
-        data = try Data(contentsOf: urlToData) // получили бинарные данные из url
+        data = try Data(contentsOf: urlPath) // получили бинарные данные из url
     } catch {
         print("Ошибка получения Data: \(error.localizedDescription)")
 

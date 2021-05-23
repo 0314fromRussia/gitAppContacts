@@ -61,7 +61,7 @@ class TableViewController: UITableViewController {
         }
         
         
-        items = parse() ?? []
+       // items = parse() ?? []
         // показываем тост, когда не смогли распарсить джейсон
         if parse() == nil {
             DispatchQueue.main.async {
