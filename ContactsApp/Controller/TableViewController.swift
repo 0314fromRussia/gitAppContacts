@@ -60,15 +60,15 @@ class TableViewController: UITableViewController {
             self.newItems()
         }
         
-        
+    
        // items = parse() ?? []
         // показываем тост, когда не смогли распарсить джейсон
-        if parse() == nil {
+        if parse() == nil  && establishUserDefaultsHaveBeenVerifed() == true {
             DispatchQueue.main.async {
                 self.showTost()
             }
         }
-        establishUserDefaultsHaveBeenVerifed()
+        
         
         
         

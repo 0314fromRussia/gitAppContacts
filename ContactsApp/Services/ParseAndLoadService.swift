@@ -99,7 +99,7 @@ func parse() -> [Contacts]? {
 
 
 
-func establishUserDefaultsHaveBeenVerifed()->Bool{
+func establishUserDefaultsHaveBeenVerifed() -> Bool {
      let defaults = UserDefaults.standard
      if let _ = defaults.string(forKey: "userDefaultsHaveBeenVerified"){
          print("user defaults were already verified")
